@@ -1,0 +1,35 @@
+@startuml Diagramme de classes
+' Projet calculatrice (1 opération)
+' Analyse sur https://digidoc.app/p/65a500d5ae16d
+
+class Calculatrice
+class Calculateur {
+calcule()
+==
+Responsable de calculer
+}
+class Afficheur {
+affiche(string)
+==
+Responsable d'afficher
+}
+class Clavier
+class Touche
+class ToucheChiffre {
+chiffre : int
+}
+Class Calcul {
+operation: string
+operandes : int[]
+resultat : int
+}
+
+Clavier o-- Touche : contient
+Calculatrice o-- "1" Afficheur : contient
+Calculatrice o-- "1" Clavier : contient
+Calculatrice o-- "1" Calculateur : contient
+Calculateur *-- "1" Calcul : "opère"
+
+ToucheChiffre --|> Touche
+
+@enduml
